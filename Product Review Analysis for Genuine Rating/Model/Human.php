@@ -9,6 +9,23 @@ class Human{
 	public function  __construct(){
 		
 	}
+	public function Login($username,$password){
+		$Query="SELECT Username,Password,UserTypeId from users where Username='".$username."' and Password='".$password."'" ;
+			$obj=new Connect() ;
+			if ($result = $obj->mysqli->query($Query)) {
+		  		if($result -> num_rows==1){
+		   			while($row = $result->fetch_assoc()) {
+        				if($row['UserTypeId']==1){
+        					return "Admin Login Sucess "; 
+        				}else{
+        					return "User Login Sucess ";
+        				}
+    				}
+		   		}else{
+		   			return "Sorry You are not a user or a admin" ;
+		   		}
+			}
+	}
 	public function  editUserData($userTypeId,$userName,$Id,$Password,$Email){
 		$Query="UPDATE users SET UserName='".$userName."',Password='".$Password."',Email='".$Email."',UserTypeId='".$userTypeId."' WHERE Id ='".$Id."'";
 		$obj=new Connect() ;
