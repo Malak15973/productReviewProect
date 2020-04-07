@@ -1,6 +1,6 @@
 <?php
     include 'product.php';
-    include 'connection.php';
+    include 'connect.php';
     
     class Category
     {
