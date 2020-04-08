@@ -88,4 +88,9 @@
         {
             $this->otherInfo = $var;
         }
+        //
+        public function updateAverageRating()
+        {
+            // will be implemented soon
+        }
     }
