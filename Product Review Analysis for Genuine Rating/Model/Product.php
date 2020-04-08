@@ -68,10 +68,6 @@
         {
             $this->catID = $var;
         }
-        public function setAverageRating($var)
-        {
-            $this->averageRating = $var;
-        }
         public function setPrice($var)
         {
             $this->price = $var;
