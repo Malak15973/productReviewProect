@@ -1,5 +1,5 @@
 <?php
-
+    include_once "connect.php" ;
     class Product
     {
         private $Name;
@@ -77,5 +77,15 @@
         public function setDetails($var)
         {
             $this->Details = $var;
+        }
+        
+        //
+        public function updateRate($userRate)
+        {
+            $this->Rate = ($this->Rate + $userRate) / 2;
+            $connecntion = new Connect();
+            $query = "UPDATE product 
+            SET Rate = \'" + $this->Rate+"\' WHERE SerialNumber = " + $this->SerialNumber + ";";
+            $connecntion->mysqli->query($query);
         }
     }
