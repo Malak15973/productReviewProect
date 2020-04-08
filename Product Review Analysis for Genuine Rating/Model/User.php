@@ -14,7 +14,7 @@ include_once "connect.php" ;
     /*Register*/
     Function Register($username,$password,$email)
     {
-        $sql = "INSERT INTO users (firstname, lastname, email)VALUES ('$username', '$password', '$email')";
+        $sql = "INSERT INTO users (firstname, lastname, email) VALUES ('".$username."', '".$password."', '"$email."')";
         $conn = new Connect();
         if($conn->mysqli->query($sql))
         {
@@ -28,7 +28,7 @@ include_once "connect.php" ;
     }
     Function ViewCatigory()
     {
-         $sql= "SELECT CategoryName,CategoryId FROM category";
+         $sql= "SELECT CategoryName,CategoryId FROM category WHERE 1";
          $conn = new Connect();
          $result = $conn->mysqli->query($sql);
          if ($result->num_rows > 0) {
