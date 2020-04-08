@@ -22,7 +22,7 @@ include_once "connect.php" ;
         }
         else
         {
-            echo "please try agian";
+            echo mysqli_error($conn->mysqli) . "please try agian";
         }
         
     }
@@ -69,7 +69,7 @@ include_once "connect.php" ;
         }
         else
         {
-            echo "please try agian";
+            echo mysqli_error($conn->mysqli) . "please try agian";
         }       
     }
     Function FeedBack($feedback)
@@ -82,7 +82,7 @@ include_once "connect.php" ;
         }
         else
         {
-            echo "please try agian";
+            echo mysqli_error($conn->mysqli) . "please try agian";
         }       
     }
      Function Login($username,$password)
@@ -104,7 +104,7 @@ include_once "connect.php" ;
         }
         else
         {
-            echo "please try agian";
+            echo mysqli_error($conn->mysqli) . "please try agian";
         }       
     }
     
