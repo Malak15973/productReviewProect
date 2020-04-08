@@ -2,91 +2,80 @@
 
     class Product
     {
-        private $name;
-        private $id;
-        private $catID;
-        private $averageRating;
-        private $price;
-        private $expireDate;
-        private $serialNumber;
-        private $otherInfo;
+        private $Name;
+        private $CategoryId;
+        private $Rate;
+        private $Price;
+        private $Picture;
+        private $SerialNumber;
+        private $Details;
         public function __construct()
         {
-            $this->name = "";
-            $this->id = "";
-            $this->catID = "";
-            $this->averageRating = 0.0;
-            $this->price = 0.0;
-            $this->expireDate = "";
-            $this->serialNumber = "";
-            $this->otherInfo = "";
+            $this->Name = "";
+            $this->CategoryId = "";
+            $this->Rate = 0.0;
+            $this->Price = 0.0;
+            $this->Picture = "";
+            $this->SerialNumber = "";
+            $this->Details = "";
         }
         //getters
         public function getName()
         {
-            return $this->name;
+            return $this->Name;
         }
-        public function getID()
+        public function getCategoryId()
         {
-            return $this->id;
+            return $this->CategoryId;
         }
-        public function getCategoryID()
+        public function getRate()
         {
-            return $this->catID;
-        }
-        public function getAverageRating()
-        {
-            return $this->averageRating;
+            return $this->Rate;
         }
         public function getPrice()
         {
-            return $this->price;
+            return $this->Price;
         }
-        public function getExpireDate()
+        public function getPicture()
         {
-            return $this->expireDate;
+            return $this->Picture;
         }
         public function getSerialNumber()
         {
-            return $this->serialNumber;
+            return $this->SerialNumber;
         }
-        public function getOtherInfo()
+        public function getDetails()
         {
-            return $this->otherInfo;
+            return $this->Details;
         }
         
         //setters
         public function setName($var)
         {
-            $this->name = $var;
+            $this->Name = $var;
         }
-        public function setID($var)
+        public function setCategoryId($var)
         {
-            $this->id = $var;
+            $this->CategoryId = $var;
         }
-        public function setCategoryID($var)
+        public function setRate($var)
         {
-            $this->catID = $var;
+            $this->Rate = $var;
         }
         public function setPrice($var)
         {
-            $this->price = $var;
+            $this->Price = $var;
         }
-        public function setExpireDate($var)
+        public function setPicture($var)
         {
-            $this->expireDate = $var;
+            $this->Picture = $var;
         }
         public function setSerialNumber($var)
         {
-            $this->serialNumber = $var;
+            $this->SerialNumber = $var;
         }
-        public function setOtherInfo($var)
+        public function setDetails($var)
         {
-            $this->otherInfo = $var;
-        }
-        //
-        public function updateAverageRating()
-        {
-            // will be implemented soon
+            $this->Details = $var;
         }
     }
