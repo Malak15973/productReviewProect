@@ -1,91 +1,94 @@
 <?php
-    include_once "connect.php" ;
-    class Product
+
+class Product
+{
+    private $name;
+    private $catID;
+    private $averageRating;
+    private $price;
+    private $serialNumber;
+    private $otherInfo;
+    private $picture;
+    public function __construct()
     {
-        private $Name;
-        private $CategoryId;
-        private $Rate;
-        private $Price;
-        private $Picture;
-        private $SerialNumber;
-        private $Details;
-        public function __construct()
-        {
-            $this->Name = "";
-            $this->CategoryId = "";
-            $this->Rate = 0.0;
-            $this->Price = 0.0;
-            $this->Picture = "";
-            $this->SerialNumber = "";
-            $this->Details = "";
-        }
-        //getters
-        public function getName()
-        {
-            return $this->Name;
-        }
-        public function getCategoryId()
-        {
-            return $this->CategoryId;
-        }
-        public function getRate()
-        {
-            return $this->Rate;
-        }
-        public function getPrice()
-        {
-            return $this->Price;
-        }
-        public function getPicture()
-        {
-            return $this->Picture;
-        }
-        public function getSerialNumber()
-        {
-            return $this->SerialNumber;
-        }
-        public function getDetails()
-        {
-            return $this->Details;
-        }
-        
-        //setters
-        public function setName($var)
-        {
-            $this->Name = $var;
-        }
-        public function setCategoryId($var)
-        {
-            $this->CategoryId = $var;
-        }
-        public function setRate($var)
-        {
-            $this->Rate = $var;
-        }
-        public function setPrice($var)
-        {
-            $this->Price = $var;
-        }
-        public function setPicture($var)
-        {
-            $this->Picture = $var;
-        }
-        public function setSerialNumber($var)
-        {
-            $this->SerialNumber = $var;
-        }
-        public function setDetails($var)
-        {
-            $this->Details = $var;
-        }
-        
-        //
-        public function updateRate($userRate)
-        {
-            $this->Rate = ($this->Rate + $userRate) / 2;
-            $connecntion = new Connect();
-            $query = "UPDATE product 
-            SET Rate = \'" + $this->Rate+"\' WHERE SerialNumber = " + $this->SerialNumber + ";";
-            $connecntion->mysqli->query($query);
-        }
+        $this->picture = "";
+        $this->name = "";
+        $this->catID = "";
+        $this->averageRating = 0.0;
+        $this->price = 0.0;
+        $this->serialNumber = "";
+        $this->otherInfo = "";
     }
+    public function updateRate($userRate)
+    {
+        $this->averageRating = ($this->averageRating + $userRate) / 2;
+        $connection = Connect::getInstance()->getConnection();
+        $query = "UPDATE product
+        SET Rate = \'"+$this->Rate+"\' WHERE SerialNumber = "+$this->SerialNumber+";";
+        $connection->mysqli->query($query);
+    }
+    //getters
+    public function getName()
+    {
+        return $this->name;
+    }
+    public function getCategoryID()
+    {
+        return $this->catID;
+    }
+    public function getAverageRating()
+    {
+        return $this->averageRating;
+    }
+    public function getPrice()
+    {
+        return $this->price;
+    }
+    public function getSerialNumber()
+    {
+        return $this->serialNumber;
+    }
+    public function getOtherInfo()
+    {
+        return $this->otherInfo;
+    }
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    //setters
+    public function setName($var)
+    {
+        $this->name = $var;
+    }
+    public function setCategoryID($var)
+    {
+        $this->catID = $var;
+    }
+    public function setPrice($var)
+    {
+        $this->price = $var;
+    }
+    public function setSerialNumber($var)
+    {
+        $this->serialNumber = $var;
+    }
+    public function setOtherInfo($var)
+    {
+        $this->otherInfo = $var;
+    }
+    public function setAverageRate($var)
+    {
+        $this->averageRating = $var;
+    }
+    public function setPicture($var)
+    {
+        $this->picture = $var;
+    }
+    //
+    public function updateAverageRating()
+    {
+        // will be implemented soon
+    }
+}
