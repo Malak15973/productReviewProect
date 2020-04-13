@@ -27,16 +27,17 @@ class Seller extends Human{
 	public function getSellerRate(){
 		return $this->sellerRate ;
 	}
-	public function addProduct($serialNumber,$Name,$Rate,$Price,$Picture,$Details){
+	public function addProduct($serialNumber,$Name,$Rate,$Price,$Picture,$Details,$CategoryId){
 		$Query="Insert Into Product values ('".$serialNumber."',
 											'".$Name."'        ,
 											'".$Rate."'	       ,
 											'".$Price."'       ,
 											'".$Picture."'     ,
-											'".$Details."'
+											'".$Details."'     ,
+											'".$CategoryId."'
 										)";
-		$obj=new Connect() ;
-		if ($result = $obj->mysqli->query($Query)) {
+		$obj=Connect::getInstance()->getConnection();
+		if ($result = $obj->query($Query)) {
 		  	echo "inserted";
 		}else{
 			echo "not inserted";
@@ -44,8 +45,8 @@ class Seller extends Human{
 	}
 	public function updateSellerRate($sellerId,$sellerRate){
 		$Query="Update Seller set SellerRate='".$sellerRate."' where Id='".$sellerId."'";
-		$obj=new Connect() ;
-		if ($result = $obj->mysqli->query($Query)) {
+		$obj= Connect::getInstance()->getConnection();
+		if ($result = $obj->query($Query)) {
 		  	echo "updated ";
 		}else{
 			echo "not updated";

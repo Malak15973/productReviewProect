@@ -26,18 +26,19 @@ class Human
                     echo "Admin login successful\n";
                     return $row['Id'];
                 } else {
-                    echo $row['Username'] . " login successful\n";
+                    echo $row['UserName'] . " login successful\n";
                     return $row['Id'];
                 }
+            }else{
+                echo "Sorry you are not admin or user";
+                return 0 ;
             }
-        } else {
-            return 0;
         }
     }
     // modified this function to return 1 if edit is successful and 0 otherwise
-    public function editUserData($userTypeId, $userName, $Id, $Password, $Email)
+    public function editUserData($userTypeId, $userName, $Id, $Password, $Email,$feedback)
     {
-        $Query = "UPDATE users SET UserName='" . $userName . "',Password='" . $Password . "',Email='" . $Email . "',UserTypeId='" . $userTypeId . "' WHERE Id ='" . $Id . "'";
+        $Query = "UPDATE users SET UserName='" . $userName . "',Password='" . $Password . "',Email='" . $Email . "',UserTypeId='" . $userTypeId . "',Feedback='".$feedback."' WHERE Id ='" . $Id . "'";
         $db_connection = Connect::getInstance()->getConnection();
         if ($result = $db_connection->query($Query)) {
             return 1;

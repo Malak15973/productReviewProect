@@ -1,6 +1,8 @@
 <?php
 include_once "Human.php";
+include_once "User.php" ;
 include_once "admin.php";
+include_once "seller.php";
 /*
 i used this to test the functions i implemented
 */
@@ -53,4 +55,6 @@ i used this to test the functions i implemented
 //     echo "failed cat add";
 // }
 
-$admin->deleteCategory(1);
+//$admin->deleteCategory(1);
+
+?>
