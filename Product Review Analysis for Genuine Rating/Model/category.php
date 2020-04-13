@@ -1,13 +1,12 @@
 <?php
+
+include_once 'connect.php';
 class Category
 {
-    /*
-    the lines i commented were giving me errors 
-    */
     private $categoryName;
     private $categoryId;
 
-    //private const products = array();   //        private static $products = array();
+    private const products = array();   //        private static $products = array();
 
     public function __construct()
     {}
@@ -38,25 +37,24 @@ class Category
         $this->categoryDescription = $categoryDescription;
     }
     #############################################################################################
-    /*
-static function getDataFromDb2($categoryId) {
-$connect = new ConnectDatabase();
-//Or Select *
-$Query = "SELECT `SerialNumber`, `Name` FROM `product` WHERE categoryId='".$categoryId."'";
-$check = $connect->getConn()->query($Query);
+    static function getDataFromDb2($categoryId) 
+    {
+        $connect = Connect::getInstance()->getConnection();
+        //Or Select *
+        $Query = "SELECT `SerialNumber`, `Name` FROM `product` WHERE categoryId='" . $categoryId . "'";
+        $check = $connect->query($Query);
 
-if ($check->num_rows > 0) {
-$result = mysqli_query($connect->getConn(),$Query) or die(mysqli_error());
-while($row = mysqli_fetch_assoc($result))
-{
-$products[] = $row;
-}
-return $products;
-}
-}
-
-}
-
+        if ($check->num_rows > 0) {
+            $result = mysqli_query($connect, $Query) or die(mysqli_error());
+            while ($row = mysqli_fetch_assoc($result)) {
+                $products[] = $row;
+            }
+            return $products;
+        } else {
+            return;
+        }
+    }       
+/*        
 //For Testing
 $obj = new Category();
 echo '<pre>';

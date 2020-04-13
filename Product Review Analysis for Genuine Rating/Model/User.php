@@ -5,6 +5,7 @@ include_once "connect.php";
 
 class User extends Human {
 
+
   function Register($username,$mail,$password,$id,$type)
   {
 

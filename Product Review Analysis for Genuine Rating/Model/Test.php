@@ -3,6 +3,14 @@ include_once "Human.php";
 include_once "User.php" ;
 include_once "admin.php";
 include_once "seller.php";
+include_once "category.php";
+
+$User=new Category() ;
+echo "<br>";
+	print_r( $User->getDataFromDb2(2));
+echo "</br>";
+
+
 /*
 i used this to test the functions i implemented
 */
