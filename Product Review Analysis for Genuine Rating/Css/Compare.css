@@ -44,17 +44,13 @@
 }
 .left{
 	width:50%;
-	height: 850px;
 	background-color:white;
 	float: left;
-	border:2px solid #2196F3;
 }
 .right{
 	width:49.4%;
-	height:850px;
 	background-color:white;
 	float: right;
-	border:2px solid #2196F3;
 }
 .footer
 {
@@ -109,9 +105,10 @@ textarea{
 	padding:10px ;  
 }
 .sub{
+	width: 300px;
 	height: 35px;
-	margin-left: 230px ;
 	font-size: 15px ;
+	margin-left: 500px ;
 }
 .checked{
 	color: orange;

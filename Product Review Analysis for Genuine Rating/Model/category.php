@@ -5,7 +5,7 @@ class Category
 {
     private $categoryName;
     private $categoryId;
-
+    
     private const products = array();   //        private static $products = array();
 
     public function __construct()
@@ -41,7 +41,7 @@ class Category
     {
         $connect = Connect::getInstance()->getConnection();
         //Or Select *
-        $Query = "SELECT `SerialNumber`, `Name` FROM `product` WHERE categoryId='" . $categoryId . "'";
+        $Query = "SELECT `SerialNumber`, `Name` FROM `product` WHERE categoryId='". $categoryId."'";
         $check = $connect->query($Query);
 
         if ($check->num_rows > 0) {

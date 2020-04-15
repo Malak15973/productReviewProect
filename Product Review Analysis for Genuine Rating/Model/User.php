@@ -118,9 +118,9 @@ class User extends Human {
   {
 
 
-      $q="SELECT CategoryName FROM category; ";
+      $q="SELECT CategoryName FROM category ";
       $db_connection = Connect::getInstance()->getConnection();
-        if ($result = $db_connection->query($query)) {
+        if ($result = $db_connection->query($q)) {
 
             $check=mysqli_num_rows($result);
               if($check>0)
@@ -133,6 +133,40 @@ class User extends Human {
 
               }
         }
+  }
+  function showProductCategory($prodctSerialNumber){
+      $q="SELECT CategoryId FROM product where SerialNumber ='".$prodctSerialNumber."' ";
+      $db_connection = Connect::getInstance()->getConnection();
+        if ($result = $db_connection->query($q)) {
+
+            $check=mysqli_num_rows($result);
+              if($check>0)
+              {
+                  while($row=mysqli_fetch_assoc($result))
+                  {
+                     return $row ;
+
+                  }
+
+              }
+        }
+  }
+  function CompareTwoProduct($userId,$productSerialNumber1,$productSerialNumber2,$review1,$review2,$Rate1,$Rate2){
+    $Category1=$this->showProductCategory($productSerialNumber1);
+    $Category2=$this->showProductCategory($productSerialNumber2);
+    if($Category1['CategoryId']===$Category2['CategoryId']){
+        $Query1="INSERT INTO rate VALUES('".$productSerialNumber1."','".$userId."','".$Rate1."','".$review1."')" ;
+        $Query2="INSERT INTO rate VALUES('".$productSerialNumber2."','".$userId."','".$Rate2."','".$review2."')" ;
+        $obj=Connect::getInstance()->getConnection();
+        if ($result = $obj->query($Query1)&&$result2 = $obj->query($Query2)) {
+            echo "Products reviewd";
+        }else{
+          echo "Products not reviewd";
+        }
+
+    }else{
+      echo "Not The Same Category"; 
+    }
   }
   function __construct() {
 

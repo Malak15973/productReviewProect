@@ -5,10 +5,9 @@ include_once "admin.php";
 include_once "seller.php";
 include_once "category.php";
 
-$User=new Category() ;
-echo "<br>";
-	print_r( $User->getDataFromDb2(2));
-echo "</br>";
+$User=new User() ;
+$User->CompareTwoProduct(96,123,567,"good","Not Good",3.4,3.6);
+
 
 
 /*
