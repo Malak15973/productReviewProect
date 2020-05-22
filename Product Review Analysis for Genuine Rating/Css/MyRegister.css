@@ -30,7 +30,7 @@
 	text-align: center;
 	padding-top: 70px ;	 
 }
-.label1,.label2,.label3,.label4{
+.label1,.label2,.label3,.label4,.label5{
 	font-size: 20px ;
 	color: #777;
 }
@@ -43,11 +43,16 @@
 .form .label3{
 	padding-right: 55px ;
 }
+.form .label5{
+	margin-right: -140px ;
+	color: red ;
+}
 .form .text{
 	width: 300px ;
 	height:30px ;
 	margin-bottom: 30px ;
 }
+
 .form .label4{
 	margin-left: 20px;
 }
