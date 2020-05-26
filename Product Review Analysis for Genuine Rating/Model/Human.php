@@ -13,24 +13,22 @@ class Human
     {
 
     }
-    // login function searches for the username and password entered by the user
-    // returns the user id if found and returns 0 otherwise
-    public function Login($username, $password)
+    public function Login($username)
     {
-        $Query = "SELECT * from users where Username='" . $username . "' and Password='" . $password . "'";
+        $Query = "SELECT email, password, usertypeid, user_email_status from users where Username='". $username ."'";
         $db_connection = Connect::getInstance()->getConnection();
-        if ($result = $db_connection->query($Query)) {
-            if ($result->num_rows == 1) {
+        if ($result = $db_connection->query($Query)) 
+        {
+            if ($result->num_rows == 1) 
+            {
                 $row = $result->fetch_assoc();
-                if ($row['UserTypeId'] == 1) {
-                    echo "Admin login successful\n";
-                    return $row['Id'];
-                } else {
-                    echo $row['UserName'] . " login successful\n";
-                    return $row['Id'];
-                }
-            }else{
-                echo "Sorry you are not admin or user";
+                $arr['email'] = $row['email'];
+                $arr['password'] = $row['password'];
+                $arr['user_email_status'] = $row['user_email_status'];
+                $arr['usertypeid'] = $row['usertypeid'];
+                return $arr;
+            }
+            else{
                 return 0 ;
             }
         }
