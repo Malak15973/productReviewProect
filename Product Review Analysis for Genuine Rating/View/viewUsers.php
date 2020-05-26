@@ -4,7 +4,7 @@
         <title>Users</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../css/style.css" rel="stylesheet">
+        <link href="../css/style1.css" rel="stylesheet">
         <link href="../images/visitor.png" type="image/png" rel="shortcut icon">
     </head>
     <body>

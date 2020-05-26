@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../pictures/category.png" type="image/png" rel="shortcut icon">
-        <link href="../css/style.css" rel="stylesheet">
+        <link href="../css/style1.css" rel="stylesheet">
     </head>
     <body id="body-delete-cat">
         
