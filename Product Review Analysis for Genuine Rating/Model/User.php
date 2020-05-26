@@ -6,19 +6,41 @@ include_once "connect.php";
 class User extends Human {
 
 
-  function Register($username,$mail,$password,$id,$type)
-  {
+  function Register($username,$email)
+    {
+        $checkUsername = "SELECT Username From users WHERE Username='".$username."'";
+        $mysqli = Connect::getInstance()->getConnection();
+      
+        if ($result = $mysqli->query($checkUsername))
+        {
+            if ($result->num_rows == 1) {
+                return 1;
+            } 
+            else 
+            {
+                $password = rand(100000, 999999);
+                $user_encrypted_password = password_hash($password, PASSWORD_DEFAULT);
+                $user_activation_code = md5(rand());
 
-      $q="INSERT INTO `users` (`UserName`, `Password`, `Id`, `Email`, `UserTypeId`, `Feedback`) VALUES ('$username', '$password','$id', '$mail', '$type', '');";
-     $db_connection = Connect::getInstance()->getConnection();
-        if ($result = $db_connection->query($q)) {
+                $insert_query = "INSERT INTO users (username, email, password, user_activation_code, user_email_status, usertypeid) "
+                              . "VALUES (?, ?, ?, ?, ?, 2)";
 
-          echo "done";
-      }
-      else{
-          echo "error";
-      }
-  }
+                $stmt = $mysqli->prepare($insert_query);
+                $stmt->bind_param("sssss",$user,$mail,$encPass,$code,$ver);
+                $user = $username;
+                $mail = $email;
+                $encPass = $user_encrypted_password;
+                $code = $user_activation_code;
+                $ver = 'not verified';
+                $stmt->execute();
+
+                $stmt->close();
+                $arr['passw'] = $password;
+                $arr['activ'] = $user_activation_code;
+                return $arr;
+            }
+        }
+    }
   function feedback($feedback,$userid)
   {
 
