@@ -11,10 +11,14 @@ function login($username, $password)
     if ($result = $db_connection->query($Query)) {
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
-            if(password_verify($password, $row['Password'] )){
+            if ($row['UserTypeId'] == 2) {
+                if (password_verify($password, $row['Password'])) {
+                    return $row;
+                } else {
+                    return 0;
+                }
+            } else {
                 return $row;
-            }else{
-                return 0;
             }
         } else {
             return 0;
