@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>Compare Page</title>
 		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="../css/Compare.css">
+		<link rel="stylesheet" type="text/css" href="../Css/Compare.css">
 	</head>
 	<body>
 		<!--Start Header -->

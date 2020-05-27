@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html>
+<?php
+include_once "../Controllers/EditProductController.php";
+?>
     <head>
         <meta charset="UTF-8" />
         <title>
             Update Product
         </title>
-        <link href="../css/style2.css" rel="stylesheet" />
+        <link href="../Css/style2.css" rel="stylesheet" />
     </head>
     <body>
         <div class="form_div">
-            <form action="" method="POST">
-                <p>Choose product category and enter product name</p>
+            <form action="" method="POST" enctype="multipart/form-data">
+                <p>Choose product category and enter product serial number</p>
                 <div class="product-labels">
                     <label>Category</label>
-                    <label>Product Name</label>
-                    <label>Price</label>
-                    <label id="expire_date_label">Expire Date</label>
-                    <label id="serial_number_label">Serial Number</label>
+                    <label>Serial number</label>
+                    <label>New name</label>
+                    <label id="expire_date_label">New Price</label>
                     <label id="product_image_label">Product Image</label>
                 </div>
                 <div class="product-inputs">
                     <select name="category">
-                        <option value="category_1">category 1</option>
-                        <option value="category_2">category 2</option>
-                        <option value="category_3">category 3</option>
+                    <?php
+displayCategories();
+?>
                     </select>
-                    <input type="text" name="product_name" />
-                    <input type="number" name="product_price" id="price_input" />
-                    <input type="date" name="product_expire_date" id="expire_date_input"/>
                     <input type="number" name="product_serial_number" />
+                    <input type="text" name="product_name" id="price_input" />
+                    <input type="number" name="product_price" id="expire_date_input"/>
                     <input type="file" name="product_image" />
                 </div>
-  
-                <textarea rows="10" cols="25" maxlength="255">Product Description.</textarea>
+                <textarea rows="10" cols="25" maxlength="255" name="product_description" placeholder="New product description"></textarea>
                 <input type="submit" class="submit_input" value="Update" />
             </form>
         </div>

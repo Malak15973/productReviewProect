@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<?php
+include_once "../Controllers/registerationController.php";
+?>
 	<head>
 		<meta charset="utf-8">
 		<title>Register Form</title>
@@ -9,24 +12,21 @@
 		<!--Start Header -->
 		<div class="header">
 			<div class="Logo">
-				<img src="../pictures/logo.png" />
+				<img src="../Pictures/logo.png" />
 				<h1>Create New Account<h1>
-			</div>	
+			</div>
 		</div>
 		<!--End Header-->
 		<!--Start Form-->
 		<div class="form">
-			<form action="" method=''>
+			<form action="" method='POST'>
 				<label class='label1'>UserName</label>
 				<input class='text' type="text" name="username" required autocomplete="false" ><br>
-				<label class='label2' >Password</label>
-				<input class='text' id='pass' type="password" name="password" required autocomplete="false">
-				<label class='label5' id='length'>Empty Password</label><br>
 				<label class='label3'>Email</label>
 				<input class='text' type="Email" name="email" required><br>
 				<input class='checkbox' type="checkbox" name="checkbox" required>
 				<label class='label4'>Accept Term Of Use</label><br>
-				<input class='but1' type="submit" value="Submit" name='submit'> 
+				<input class='but1' type="submit" value="Submit" name='submit'>
 			</form>
 		</div>
 		<!--End Form-->
@@ -41,38 +41,5 @@
 		</div>
 		<!--End Footer-->
 	</body>
-	<script type="text/javascript">
-		pass.addEventListener('keyup',function(){
-			strength();
-		})
-		function strength(){
-			var val=document.getElementById('pass').value;
-			var status=document.getElementById('length') ;
-			var counter=0 ;
-			if(val!=""){
-				if(val.length<=5)
-					counter=1 ;
-				if(val.length>5 && val.length<=10)
-					counter=2 ;
-				if(val.length>10 && val.length<=15)
-					counter=3 ;
-				
-				if(counter==1){
-					status.innerHTML="*Weak Password ";
-					status.style.color="red";
-				}
-				if(counter==2){
-					status.innerHTML="*Good Password";
-					status.style.color="green";
-				}
-				if(counter==3){
-					status.innerHTML="Strong Password";
-					status.style.color="blue";
-				}
-			}else{
-				status.innerHTML="Empty Password";
-				status.style.color="red";
-			}
-		}
-	</script>
+	
 </html>

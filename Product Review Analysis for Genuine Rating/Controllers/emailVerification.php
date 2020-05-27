@@ -1,6 +1,6 @@
 <?php
 
-    include('../Model/connect.php');
+    include('../Database/connect.php');
     $message = '';
     $mysqli = Connect::getInstance()->getConnection();
     echo 'A';

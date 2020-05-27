@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<?php
+include_once "../Controllers/LoginController.php";
+?>    <head>
         <title>Login</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">	
-
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="../res/images/icons/favicon.ico"/>
         <link rel="stylesheet" type="text/css" href="../res/vendor/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../rse/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -22,7 +23,7 @@
                         <img src="../res/images/img-01.png" alt="IMG">
                     </div>
 
-                    <form class="login100-form validate-form" action="HomePage.php" method="POST">
+                    <form class="login100-form validate-form" action="" method="POST">
                         <span class="login100-form-title">Login</span>
 
                         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">

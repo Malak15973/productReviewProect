@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
+<?php
+include_once "../Controllers/DeleteProductController.php";
+?>
     <head>
         <meta charset="UTF-8" />
         <title>
             Delete Product
         </title>
-        <link href="../css/style2.css" rel="stylesheet" />
+        <link href="../Css/style2.css" rel="stylesheet" />
     </head>
     <body>
         <div class="form_div">
@@ -13,17 +16,17 @@
                 <div class="product-labels">
                     <br><br><br><br><br><br><br><br>
                     <label>Category</label>
-                    <label>Product Name</label>
+                    <label>Product Serial Number</label>
                 </div>
                 <div class="product-inputs">
                     <select name="category">
-                        <option value="category_1">category 1</option>
-                        <option value="category_2">category 2</option>
-                        <option value="category_3">category 3</option>
+                    <?php
+displayCategories();
+?>
                     </select>
-                    <input type="text" name="product_name"/>
+                    <input type="text" name="product_serial_number"/>
                 </div>
-                
+
                 <input type="submit" class="submit_input" value="Delete" />
             </form>
         </div>

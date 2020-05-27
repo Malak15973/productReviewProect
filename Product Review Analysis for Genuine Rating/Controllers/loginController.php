@@ -1,44 +1,36 @@
 <?php
-
-    include('../Model/connect.php');
-    include('../Model/Human.php');
-    if (isset($_SESSION['user_id'])) {
-        header("location:../index.php");
+include_once "../Model/admin.php";
+include_once "../Model/User.php";
+include_once "../constants/constants.php";
+session_start();
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $user = new User();
+    $result = $user->Login($username, $password);
+    if (isset($result['Id']) && isset($result['UserTypeId'])) {
+        $id = $result['Id'];
+        $type = $result['UserTypeId'];
+        $username = $result['UserName'];
+        $email = $result['Email'];
+        $feedback = $result['Feedback'];
+        $isVerified = $result['user_email_status'];
+        if ($type == 1) {
+            $_SESSION[ADMIN_SESSION] = $id;
+            header("Location: ../View/AdminHomePage.php");
+        } else {
+            if ($isVerified == 'verified') {
+                $_SESSION[USER_SESSION] = $id;
+                header("Location: ../View/HomePage.php");
+            } else {
+                echo "<script>
+        alert('Login failed, email not verified');
+        </script>";
+            }
+        }
+    } else if ($result == 0) {
+        echo "<script>
+        alert('Login failed, invalid data');
+        </script>";
     }
-    
-    if (isset($_POST["submit"])) 
-    {
-        $login = new Human();
-        $returned = $login->Login($_POST['username']);
-        
-        if($returned == 0) {
-            echo "<script> alert('Wrong Username'); window.location.href='../View/Login.php'; </script>";
-        }
-        else if($returned['usertypeid'] == 1)
-        {
-            if ($_POST["password"] == $returned["password"])
-            {
-                $_SESSION['user_id'] = $returned['email'];
-                header("Location:../View/ProductHomePage.php");
-            }
-            else {
-                echo "<script> alert('Wrong Password2'); window.location.href='../View/Login.php'; </script>";
-            }
-        }
-        else 
-        {
-            if ($returned['user_email_status'] == 'verified') 
-            {
-                if (password_verify($_POST["password"], $returned["password"])) {
-                    $_SESSION['user_id'] = $returned['email'];
-                } else {
-                    echo "<script> alert('Wrong Password'); window.location.href='../View/Login.php'; </script>";
-                }
-                echo "<script> alert('Login successful'); window.location.href='../View/HomePage.php'; </script>";
-            } 
-            else {
-                echo "<script> alert('Please First Verify, your email address'); window.location.href='../View/Login.php'; </script>";
-            }
-        }    
-    } 
-        
+}
