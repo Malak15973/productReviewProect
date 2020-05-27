@@ -11,7 +11,7 @@ if (isset($_POST["submit"])) {
             . "window.location.href='../View/RegisterView.php';"
             . "</script>";
     } else if($returned != 0) {
-        $base_url = "http://localhost/productReviewProject/Controllers/";
+        $base_url = "http://localhost/PHP_Course/Product%20Review%20Analysis%20for%20Genuine%20Rating/Controllers/";
         $mail_body = "
                           <p>Hi " . $_POST['username'] . ",</p>
                           <p>Thanks for Registration. Your password is " . $returned['passw'] . ", This password will work only after your email verification.</p>

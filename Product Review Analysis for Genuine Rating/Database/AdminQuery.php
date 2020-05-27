@@ -16,7 +16,6 @@ function AddProduct($product)
     $category_id = $product->getCategoryID();
     $query = "INSERT INTO `product` (`SerialNumber`, `Name`, `Rate`, `Price`, `Picture`, `Details`, `CategoryId`)
         VALUES (?, ?, ?, ?, ?, ?, ?);";
-
     $prepared_statement = mysqli_prepare($db_connection, $query);
     mysqli_stmt_bind_param($prepared_statement, "isddssi", $serial_number, $name, $rate, $price
         , $picture, $details, $category_id);

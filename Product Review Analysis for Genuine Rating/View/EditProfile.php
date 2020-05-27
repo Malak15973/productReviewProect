@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Edit Profile</title>
-		<link rel="stylesheet" type="text/css" href="../Css/EditProfile.css">
+		<link rel="stylesheet" type="text/css" href="../css/EditProfile.css">
 	</head>
 	<body>
 		<!--Start Header -->
@@ -22,7 +22,8 @@
 				<label class='label2'>Old Password</label>
 				<input class='text' type="password" name="password" required autocomplete="false"><br>
                 <label class='label2'>New Password</label>
-				<input class='text' type="password" name="password" required autocomplete="false"><br>
+				<input class='text' type="password" name="password" id='pass' required autocomplete="false">
+				<label class='label5' id='length'>Empty Password</label><br>
 				<label class='label3'>New Email</label>
 				<input class='text' type="Email" name="email" required><br>
 				<input class='but1' type="submit" value="Submit" name='Save'> 
@@ -40,4 +41,38 @@
 		</div>
 		<!--End Footer-->
 	</body>
+	<script type="text/javascript">
+		pass.addEventListener('keyup',function(){
+			strength();
+		})
+		function strength(){
+			var val=document.getElementById('pass').value;
+			var status=document.getElementById('length') ;
+			var counter=0 ;
+			if(val!=""){
+				if(val.length<=5)
+					counter=1 ;
+				if(val.length>5 && val.length<=10)
+					counter=2 ;
+				if(val.length>10 && val.length<=15)
+					counter=3 ;
+				
+				if(counter==1){
+					status.innerHTML="*Weak Password ";
+					status.style.color="red";
+				}
+				if(counter==2){
+					status.innerHTML="*Good Password";
+					status.style.color="green";
+				}
+				if(counter==3){
+					status.innerHTML="Strong Password";
+					status.style.color="blue";
+				}
+			}else{
+				status.innerHTML="Empty Password";
+				status.style.color="red";
+			}
+		}
+	</script>
 </html>
