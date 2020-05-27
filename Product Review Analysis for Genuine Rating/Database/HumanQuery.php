@@ -7,11 +7,15 @@ $db_connection = Connect::getInstance()->getConnection();
 function login($username, $password)
 {
     global $db_connection;
-    $Query = "SELECT * from users where UserName='" . $username . "' and Password='" . $password . "'";
+    $Query = "SELECT * from users where UserName='" . $username . "' ";
     if ($result = $db_connection->query($Query)) {
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
-            return $row;
+            if(password_verify($password, $row['Password'] )){
+                return $row;
+            }else{
+                return 0;
+            }
         } else {
             return 0;
         }
