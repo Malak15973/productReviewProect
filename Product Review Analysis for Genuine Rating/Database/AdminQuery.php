@@ -3,6 +3,7 @@ include_once "connect.php";
 include_once '../Model/Product.php';
 include_once '../Model/category.php';
 include_once '../Model/User.php';
+include_once '../Model/Seller.php';
 $db_connection = Connect::getInstance()->getConnection();
 function AddProduct($product)
 {
@@ -20,6 +21,20 @@ function AddProduct($product)
     mysqli_stmt_bind_param($prepared_statement, "isddssi", $serial_number, $name, $rate, $price
         , $picture, $details, $category_id);
     if ($result = mysqli_stmt_execute($prepared_statement)) {
+        return 1;
+    } else {
+        echo $db_connection->error;
+        return 0;
+    }
+}
+function AddSellerToProduct($product,$seller)
+{
+    global $db_connection;
+    $serial_number = $product->getSerialNumber();
+    $seller_id =$seller->getId();
+    $query = "INSERT INTO `has` (`SellerId`, `ProductSerialNumber`)
+        VALUES ('".$seller_id."','".$serial_number."');";
+    if ($result = $db_connection->query($query)) {
         return 1;
     } else {
         echo $db_connection->error;

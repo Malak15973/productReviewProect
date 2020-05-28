@@ -28,6 +28,11 @@ class Human
     {
        return ViewCategories();
     }
+    public function ViewSellerIds()
+    {
+       return viewSellersIds();
+    }
+
     public function __destruct()
     {}
 

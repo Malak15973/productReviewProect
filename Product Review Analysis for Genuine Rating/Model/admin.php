@@ -11,6 +11,10 @@ class Admin extends Human
     {
         return AddProduct($product);
     }
+    public function addSellerToProduct($product,$seller)
+    {
+        return AddSellerToProduct($product,$seller);
+    }
     /*
     this function edits a specific product taking an object of the updated product and the serial number
     returns 1 if successful and 0 otherwise

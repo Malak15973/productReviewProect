@@ -1,6 +1,7 @@
 <?php
 include_once "connect.php";
 include_once '../Model/category.php';
+include_once '../Model/Seller.php';
 include_once '../Model/Product.php';
 include_once '../Model/User.php';
 $db_connection = Connect::getInstance()->getConnection();
@@ -52,6 +53,27 @@ function ViewCategories()
                 $all_categories[$counter++] = $curr_category;
             }
             return $all_categories;
+        } else {
+            return 0;
+        }
+    }
+
+}
+function viewSellersIds()
+{
+    global $db_connection;
+    $all_ids = array();
+    $Query = "SELECT id from seller";
+    if ($result = $db_connection->query($Query)) {
+        if ($result->num_rows > 0) {
+            $counter = 0;
+            while ($row = $result->fetch_assoc()) {
+                $seller_id = $row['id'];
+                $curr_seller = new Seller();
+                $curr_seller->setSellerId($seller_id);
+                $all_ids[$counter++] = $curr_seller;
+            }
+            return $all_ids;
         } else {
             return 0;
         }

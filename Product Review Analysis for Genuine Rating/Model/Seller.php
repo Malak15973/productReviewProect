@@ -1,6 +1,5 @@
 <?php
 include_once "Human.php" ;
-include_once "connect.php" ;
 class Seller extends Human{
 	private $sellerPhone ;
 	private $sellerRate  ; 
@@ -18,6 +17,9 @@ class Seller extends Human{
 	public function setSellerPhone($sellerPhone){
 		$this->sellerPhone=$sellerPhone ;
 	}
+	public function setSellerId($sellerId){
+		$this->setId($sellerId) ;
+	}
 	public function setSellerRate($sellerRate){
 		$this->sellerRate=$sellerRate ;
 	}
@@ -27,21 +29,8 @@ class Seller extends Human{
 	public function getSellerRate(){
 		return $this->sellerRate ;
 	}
-	public function addProduct($serialNumber,$Name,$Rate,$Price,$Picture,$Details,$CategoryId){
-		$Query="Insert Into Product values ('".$serialNumber."',
-											'".$Name."'        ,
-											'".$Rate."'	       ,
-											'".$Price."'       ,
-											'".$Picture."'     ,
-											'".$Details."'     ,
-											'".$CategoryId."'
-										)";
-		$obj=Connect::getInstance()->getConnection();
-		if ($result = $obj->query($Query)) {
-		  	echo "inserted";
-		}else{
-			echo "not inserted";
-		}
+	public function getSellerId(){
+		return $this->getId() ;
 	}
 	public function updateSellerRate($sellerId,$sellerRate){
 		$Query="Update Seller set SellerRate='".$sellerRate."' where Id='".$sellerId."'";

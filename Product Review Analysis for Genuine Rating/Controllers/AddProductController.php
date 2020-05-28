@@ -8,7 +8,9 @@ if (isset($_POST['product_name']) && !empty($_POST['product_name'])
     && isset($_POST['product_price']) && !empty($_POST['product_price'])
     && isset($_FILES['product_image']['tmp_name']) && !empty($_FILES['product_image']["tmp_name"])
     && isset($_POST['category']) && !empty($_POST['category'])
-    && isset($_POST['product_description']) && !empty($_POST['product_description'])) {
+    && isset($_POST['product_description']) && !empty($_POST['product_description'])
+    && isset($_POST['id']) && !empty($_POST['id'])
+) {
     $fileUpload = uploadProductImage('product_image');
 
     if ($fileUpload == 1) {
@@ -19,8 +21,11 @@ if (isset($_POST['product_name']) && !empty($_POST['product_name'])
         $product->setPicture("../images/" . basename($_FILES['product_image']['name']));
         $product->setSerialNumber($_POST['product_serial_number']);
         $product->setOtherInfo($_POST['product_description']);
+        $seller =new Seller() ;
+        $seller->setSellerId($_POST['id']);
         $result = $admin->addProduct($product);
-        if ($result == 1) {
+        $admin->addSellerToProduct($product,$seller);
+        if ($result == 1) { 
             echo "<script>
         alert('product add successful');
         </script>";
@@ -45,6 +50,20 @@ function displayCategories()
     } else {
         foreach ($result as $category) {
             $option = '<option value = "' . $category->getCategoryId() . '">' . $category->getCategoryName() . '</option>';
+            echo $option;
+        }
+        echo "</select>";
+    }
+}
+function displaySellerIds()
+{
+    global $admin;
+    $result = $admin->ViewSellerIds();
+    if ($result == 0) {
+        echo "<p>something went wrong connecting to database</p>";
+    } else {
+        foreach ($result as $id) {
+            $option = '<option value = "' . $id->getSellerId() . '">' . $id->getSellerId() . '</option>';
             echo $option;
         }
     }

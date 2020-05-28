@@ -17,6 +17,7 @@ include_once "../Controllers/AddProductController.php";
                     <label id="serial_number_label">Serial Number</label>
                     <label id="product_image_label">Product Image</label>
                     <label>Category</label>
+                    <label>Seller Id</label>
                 </div>
                 <div class="product-inputs">
                     <input type="text" name="product_name" />
@@ -24,9 +25,9 @@ include_once "../Controllers/AddProductController.php";
                     <input type="number" name="product_serial_number" />
                     <input type="file" name="product_image" />
                     <select name="category">
-                    <?php
-displayCategories();
-?>
+                     <?php  displayCategories();?>  
+                    <select name="id">    
+                    <?php displaySellerIds();?>
                     </select>
                 </div>
                 <textarea rows="10" cols="25" maxlength="255" placeholder="Product Description." name="product_description"></textarea>
