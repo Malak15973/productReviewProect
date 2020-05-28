@@ -10,5 +10,6 @@ function displayCategories()
             $option = '<option value = "' . $category->getCategoryId() . '">' . $category->getCategoryName() . '</option>';
             echo $option;
         }
+        echo "</select>";
     }
 }

@@ -1,6 +1,8 @@
 <?php
 include_once "../Model/admin.php";
 include_once "../uploaders/imageUploader.php";
+include_once "displayCategoriesController.php";
+include_once "displaySellersController.php";
 include_once "isAdminLogged.php";
 $admin = new Admin();
 if (isset($_POST['product_name']) && !empty($_POST['product_name'])
@@ -41,30 +43,4 @@ if (isset($_POST['product_name']) && !empty($_POST['product_name'])
     }
 
 }
-function displayCategories()
-{
-    global $admin;
-    $result = $admin->viewCategories();
-    if ($result == 0) {
-        echo "<p>something went wrong connecting to database</p>";
-    } else {
-        foreach ($result as $category) {
-            $option = '<option value = "' . $category->getCategoryId() . '">' . $category->getCategoryName() . '</option>';
-            echo $option;
-        }
-        echo "</select>";
-    }
-}
-function displaySellerIds()
-{
-    global $admin;
-    $result = $admin->ViewSellerIds();
-    if ($result == 0) {
-        echo "<p>something went wrong connecting to database</p>";
-    } else {
-        foreach ($result as $id) {
-            $option = '<option value = "' . $id->getSellerId() . '">' . $id->getSellerId() . '</option>';
-            echo $option;
-        }
-    }
-}
+
