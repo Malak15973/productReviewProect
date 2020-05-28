@@ -1,5 +1,11 @@
 <?php
-include_once "UserQuery.php";
+include_once "AdminQuery.php";
+include_once "../Model/Seller.php";
 
-echo register("kirollos","kirolloshany9999@gmail.com");
+$seller = new Seller();
+$seller->setName('kiro');
+$seller->setSellerPhone('01202312321');
+echo AddSeller($seller);
+
+
 

@@ -27,13 +27,13 @@ function AddProduct($product)
         return 0;
     }
 }
-function AddSellerToProduct($product,$seller)
+function AddSellerToProduct($product, $seller)
 {
     global $db_connection;
     $serial_number = $product->getSerialNumber();
-    $seller_id =$seller->getId();
+    $seller_id = $seller->getId();
     $query = "INSERT INTO `has` (`SellerId`, `ProductSerialNumber`)
-        VALUES ('".$seller_id."','".$serial_number."');";
+        VALUES ('" . $seller_id . "','" . $serial_number . "');";
     if ($result = $db_connection->query($query)) {
         return 1;
     } else {
@@ -123,4 +123,28 @@ function DeleteFeedback($userId)
         return 0;
     }
 
+}
+function DeleteSeller($seller_id)
+{
+    global $db_connection;
+    $query = 'DELETE from seller WHERE Id =' . $seller_id . '';
+    if ($result = $db_connection->query($query)) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+function AddSeller($seller){
+    global $db_connection;
+    $query = "INSERT INTO `seller` (`Name`,`TelephoneNumber`,`SellerRate`) VALUES (?,?,0);";
+    $prepared_statement = mysqli_prepare($db_connection, $query);
+    $name = $seller->getName();
+    $phone = $seller->getSellerPhone();
+    mysqli_stmt_bind_param($prepared_statement, "ss", $name, $phone);
+    if ($result = mysqli_stmt_execute($prepared_statement)) {
+        return 1;
+    } else {
+        return 0;
+    }
 }

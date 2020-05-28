@@ -59,21 +59,23 @@ function ViewCategories()
     }
 
 }
-function viewSellersIds()
+function viewSellers()
 {
     global $db_connection;
-    $all_ids = array();
-    $Query = "SELECT id from seller";
+    $sellers = array();
+    $Query = "SELECT * from seller";
     if ($result = $db_connection->query($Query)) {
         if ($result->num_rows > 0) {
             $counter = 0;
             while ($row = $result->fetch_assoc()) {
-                $seller_id = $row['id'];
-                $curr_seller = new Seller();
-                $curr_seller->setSellerId($seller_id);
-                $all_ids[$counter++] = $curr_seller;
+                $seller = new Seller();
+                $seller->setSellerId($row['Id']);
+                $seller->setName($row['Name']);
+                $seller->setSellerPhone($row['TelephoneNumber']);
+                $seller->setSellerRate($row['SellerRate']);
+                $sellers[$counter++] = $seller;
             }
-            return $all_ids;
+            return $sellers;
         } else {
             return 0;
         }
