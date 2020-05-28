@@ -25,10 +25,9 @@ include_once "../Controllers/AddProductController.php";
                     <input type="number" name="product_serial_number" />
                     <input type="file" name="product_image" />
                     <select name="category">
-                     <?php  displayCategories();?>  
+                     <?php  displayCategories();?> 
                     <select name="id">    
-                    <?php displaySellerIds();?>
-                    </select>
+                    <?php displaySellers();?>
                 </div>
                 <textarea rows="10" cols="25" maxlength="255" placeholder="Product Description." name="product_description"></textarea>
                 <input type="submit" class="submit_input" />

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
-include_once "../Controllers/LoginController.php";
+include_once "../Controllers/loginController.php";
 ?>    <head>
         <title>Login</title>
         <meta charset="UTF-8">

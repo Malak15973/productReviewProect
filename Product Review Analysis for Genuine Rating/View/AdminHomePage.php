@@ -2,10 +2,7 @@
 <html>
 <?php
 include_once "../constants/constants.php";
-session_start();
-if(!isset($_SESSION[ADMIN_SESSION])){
-    header("Location: ../View/Login.php");
-}
+include_once "../Controllers/isAdminLogged.php";
 ?>
     <head>
         <title>Admin Home-Page</title>
@@ -45,6 +42,8 @@ if(!isset($_SESSION[ADMIN_SESSION])){
             <a href="../View/add_product.php"><button class="admin-btns">Add Product</button></a>
             <a href="../View/update_product.php"><button class="admin-btns">Update Product</button></a>
             <a href="../View/delete_product.php"><button class="admin-btns">Delete Product</button></a>
+            <a href="../View/add_seller.php"><button class="admin-btns">Add Seller</button></a>
+            <a href="../View/delete_seller.php"><button class="admin-btns">Delete Seller</button></a>
         </div>
         <div class="categ-div">
             <h3>Categories</h3>

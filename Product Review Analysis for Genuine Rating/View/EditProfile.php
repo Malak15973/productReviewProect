@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Edit Profile</title>
-		<link rel="stylesheet" type="text/css" href="../css/EditProfile.css">
+		<link rel="stylesheet" type="text/css" href="../Css/EditProfile.css">
 	</head>
 	<body>
 		<!--Start Header -->
