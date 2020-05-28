@@ -28,9 +28,9 @@ class Human
     {
        return ViewCategories();
     }
-    public function ViewSellerIds()
+    public function ViewSellers()
     {
-       return viewSellersIds();
+       return viewSellers();
     }
 
     public function __destruct()

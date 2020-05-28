@@ -56,4 +56,12 @@ class Admin extends Human
     public function deleteFeedback($userId){
         return DeleteFeedback($userId);
     }
+
+    public function addSeller($seller){
+        return AddSeller($seller);
+    }
+
+    public function deleteSeller($seller_id){
+        return DeleteSeller($seller_id);
+    }
 }
