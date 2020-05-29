@@ -13,6 +13,7 @@ if (isset($_POST['selectedCategory']) && !empty($_POST['selectedCategory'])) {
         echo "<script>
         alert('category deleted successfully');
         </script>";
+        $admin->logger(5, $_POST['selectedCategory']);
     }
 }
 
