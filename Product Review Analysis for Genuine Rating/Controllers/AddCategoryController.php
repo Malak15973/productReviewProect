@@ -12,6 +12,7 @@ if (isset($_POST['categoryName']) && !empty($_POST['categoryName'])) {
         echo "<script>
         alert('category added successfully');
         </script>";
+        $admin->logger(4, $_POST['categoryName']);
     } else {
         echo "<script>
         alert('category add failed, failure in database');
