@@ -1,8 +1,9 @@
 <?php
+include_once "../Model/Human.php";
 function displayCategories()
 {
-    global $admin;
-    $result = $admin->viewCategories();
+    $human = new Human();
+    $result = $human->viewCategories();
     if ($result == 0) {
         echo "<p>something went wrong connecting to database</p>";
     } else {

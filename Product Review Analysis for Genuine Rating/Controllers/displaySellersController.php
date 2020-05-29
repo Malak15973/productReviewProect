@@ -1,8 +1,9 @@
 <?php
+include_once "../Model/Human.php";
 function displaySellers()
 {
-    global $admin;
-    $result = $admin->ViewSellers();
+    $human = new Human();
+    $result = $human->ViewSellers();
     if ($result == 0) {
         echo "<p>something went wrong connecting to database</p>";
     } else {
