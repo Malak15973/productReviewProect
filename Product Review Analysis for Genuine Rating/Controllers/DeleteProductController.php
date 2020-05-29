@@ -11,6 +11,7 @@ if (isset($_POST['product_serial_number']) && !empty($_POST['product_serial_numb
         echo "<script>
         alert('product delete successful');
         </script>";
+        $admin->logger(2, $_POST['product_serial_number']);
     } else {
         echo "<script>
         alert('product delete failed, database failure');
