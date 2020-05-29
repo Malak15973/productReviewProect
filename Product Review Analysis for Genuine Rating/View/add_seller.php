@@ -5,7 +5,7 @@ include_once "../Controllers/AddSellerController.php";
 ?>
     <head>
         <meta charset="UTF-8" />
-        <title>Add Seller</title>
+        <title>Add Product</title>
         <link href="../Css/style2.css" rel="stylesheet" />
     </head>
     <body>

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<?php
+include_once "../Controllers/HomePageController.php";
+?>
     <head>
         <meta charset="UTF-8">
         <title>Home Page</title>
@@ -14,16 +17,18 @@
             <form>
                 <input class="searchbar" type="search" name="Search bar">
                 <a href="product.php" class="btn btn-primary" class="normalLink" href="">Search</a>
-                <a href="Login.php" class="btn btn-primary" class="normalLink" href="Login.php">Login</a>
-                <a href="RegisterView.php" class="btn btn-primary" class="normalLink" href="RegisterView.php">Register</a>
+                <?php
+echo $html;
+?>
             </form>
             <select class="categorySelector">
-                <option>All</option>
-            </select>
+                <?php
+                displayCategories();
+                ?>
             <input class="filterBtn" type="submit" value="Filter">
         </div>
         <div class='body'>
-            <div class="row"> 
+            <div class="row">
                 <div class="card">
                     <img class="card-img-top" src="../Pictures/1.jpg">
                     <div class="card-body">
@@ -53,7 +58,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row"> 
+            <div class="row">
                 <div class="card">
                     <img class="card-img-top" src="../Pictures/1.jpg">
                     <div class="card-body">
