@@ -6,7 +6,7 @@ include_once "isAdminLogged.php";
 if (isset($_POST['categoryName']) && !empty($_POST['categoryName'])) {
     $category = new Category();
     $category->setCategoryName($_POST['categoryName']);
-    $admin = unserialize($_SESSION['loggedAdmin']);
+    $admin = new Admin();
     $result = $admin->addCategory($category);
     if ($result == 1) {
         echo "<script>
