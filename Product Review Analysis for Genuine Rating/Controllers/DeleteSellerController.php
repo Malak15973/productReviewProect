@@ -13,6 +13,7 @@ if(isset($_POST['selectedSeller']) && !empty($_POST['selectedSeller'])){
         echo "<script>
         alert('seller deleted successfully');
         </script>";
+        $admin->logger(9, $_POST['selectedSeller']);
     }
 }
 
