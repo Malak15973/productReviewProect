@@ -105,4 +105,47 @@ class Human
         return $this->Email;
     }
     //End Getter
+    function logger($type, $object)
+    {
+        settype($type, "int");
+        define("fileName", "log.txt");
+        $file = fopen(fileName, "a+");
+        switch (${'type'})
+        {
+            case 1:
+                $text = date("Y-m-d H:i:s") . " product add " . $object->getName() . " To category " . $object->getCategoryID() . "\n";
+                break;
+            case 2:
+                $text = date("Y-m-d H:i:s") . " product delete " . $object . "\n";                        
+                break;
+            case 3:
+                $text = date("Y-m-d H:i:s") . " product update " . $object->getName() . "\n";
+                break;
+            case 4:
+                $text = date("Y-m-d H:i:s") . " category add " . $object. "\n";
+                break;
+            case 5:
+                $text = date("Y-m-d H:i:s") . " category delete " . $object. "\n";
+                break;
+            case 6:
+                $text = date("Y-m-d H:i:s") . " user register " . $object . "\n";
+                break;
+            case 7:
+                $text = date("Y-m-d H:i:s") ." user login " . $object . "\n";
+                break;
+            case 8:
+                $text = date("Y-m-d H:i:s") . " add seller " . $object->getName() ."\n";
+                break;
+            case 9:
+                $text = date("Y-m-d H:i:s") . " delete seller " . $object . "\n";
+                break;
+            default:
+                settype($object, "null");
+                
+                $text = date("Y-m-d H:i:s") . " test\n";
+                break;
+        }
+        fwrite($file, $text);
+        fclose($file);
+    }
 }
