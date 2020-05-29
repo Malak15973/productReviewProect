@@ -35,6 +35,7 @@ if (isset($_POST['product_name']) && !empty($_POST['product_name'])
             echo "<script>
         alert('product add failed, failure in database');
         </script>";
+            $admin->logger(1, $product);
         }
     } else {
         echo "<script>
