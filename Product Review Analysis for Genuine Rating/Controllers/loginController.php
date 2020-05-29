@@ -22,6 +22,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             if ($isVerified == 'verified') {
                 $_SESSION[USER_SESSION] = $id;
                 header("Location: ../View/HomePage.php");
+                $user->logger(7, $_POST['username']);
             } else {
                 echo "<script>
         alert('Login failed, email not verified');
