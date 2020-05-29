@@ -25,6 +25,7 @@ if (isset($_POST['product_name']) && !empty($_POST['product_name'])
             echo "<script>
         alert('product edit successful');
         </script>";
+            $admin->logger(3, $product);
         } else {
             echo "<script>
         alert('product edit failed, failure in database');
