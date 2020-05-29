@@ -40,6 +40,7 @@ if (isset($_POST["submit"])) {
                             alert('Register Done, Please check your mail.');
                             window.location.href='../View/RegisterView.php';
                      </script>";
+            $register->logger(6, $_POST['username']);
         } else {
             echo "<script> alert('Not sent!'); "
                 . "window.location.href='../View/RegisterView.php';"
