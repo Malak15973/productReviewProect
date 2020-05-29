@@ -16,5 +16,6 @@ if(isset($_POST['seller_name']) && !empty($_POST['seller_name'])
         echo "<script>
         alert('seller added successfully');
         </script>";
+        $admin->logger(8, $seller);
     }
 }
